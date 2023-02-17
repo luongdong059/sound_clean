@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    ![logo](https://user-images.githubusercontent.com/61487699/219612918-7ea701e6-963f-46fc-aa28-a3d45a934493.png)
   </a>
 
   <h3 align="center">Sound Clean</h3>
@@ -47,7 +47,8 @@
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p> -->
+  
+
 </div>
 
 
