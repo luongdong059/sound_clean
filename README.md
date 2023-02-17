@@ -24,6 +24,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url] -->
+![logo](https://user-images.githubusercontent.com/61487699/219613145-ac2f4335-e31f-4e35-8c39-d77f2da7079b.png)
 
 
 
@@ -31,7 +32,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    ![logo](https://user-images.githubusercontent.com/61487699/219612918-7ea701e6-963f-46fc-aa28-a3d45a934493.png)
+
   </a>
 
   <h3 align="center">Sound Clean</h3>
