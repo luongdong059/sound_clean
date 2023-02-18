@@ -1,20 +1,16 @@
-import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sound_clean/screens/clear/clear_screen.dart';
 import 'package:sound_clean/screens/measure/measure_screen.dart';
 import 'package:sound_clean/screens/record/record_screen.dart';
 import 'package:sound_clean/screens/setting/setting_screen.dart';
-import 'package:sound_clean/screens/splash/splash_bloc.dart';
 import 'package:sound_clean/screens/splash/splash_screen.dart';
-import 'package:sound_clean/screens/splash/splash_state.dart';
 import 'package:sound_clean/themes/app_colors.dart';
+
+import 'blocs/blocs_export.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

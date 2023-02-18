@@ -1,14 +1,16 @@
 import 'dart:async';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sound_clean/main.dart';
-import 'package:sound_clean/screens/splash/splash_event.dart';
-import 'package:sound_clean/screens/splash/splash_state.dart';
+
+part 'splash_event.dart';
+part 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
-  SplashBloc() : super(SplashNotInitializedState()) {
+  SplashBloc() : super(SplashInitial()) {
     on<GetVersionEvent>(_onGetVersion);
     on<GoNavScreensEvent>(_onGoNavScreens);
   }
@@ -24,9 +26,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
     if (version.isNotEmpty) {
       emit(GetVersionSuccess(version: version));
-      Timer(Duration(seconds: 3), () {});
-    } else
-      emit(GetVersionFaild());
+      Timer(const Duration(seconds: 3), () {});
+    } else {
+      emit(const GetVersionFailed());
+    }
   }
 
   void _onGoNavScreens(GoNavScreensEvent event, Emitter<SplashState> emit) {
