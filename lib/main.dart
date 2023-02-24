@@ -9,6 +9,7 @@ import 'package:sound_clean/screens/record/record_screen.dart';
 import 'package:sound_clean/screens/setting/setting_screen.dart';
 import 'package:sound_clean/screens/splash/splash_screen.dart';
 import 'package:sound_clean/themes/app_colors.dart';
+import 'package:sound_clean/themes/theme.dart';
 
 import 'blocs/blocs_export.dart';
 
@@ -17,7 +18,14 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
   runApp(MultiBlocProvider(
-    providers: [BlocProvider(create: (context) => SplashBloc())],
+    providers: [
+      BlocProvider(
+        create: (context) => SplashBloc(),
+      ),
+      BlocProvider(
+        create: (context) => ClearBloc(),
+      ),
+    ],
     child: EasyLocalization(
       supportedLocales: const [
         Locale('en', 'US'),
@@ -43,7 +51,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'Poppins-Regular',
+        fontFamily: AppAssets.font,
       ),
       home: const SplashScreen(),
     );
@@ -70,36 +78,37 @@ class _NavBarScreenState extends State<NavBarScreen> {
     return Scaffold(
       body: _screenList[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
         currentIndex: _currentIndex,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppColors.primary,
-        // unselectedItemColor: Colors.black,
+        selectedItemColor: AppColors.black06,
+        unselectedItemColor: AppColors.black02,
         iconSize: 30,
         onTap: screenChanger,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.blur_circular_outlined,
             ),
-            label: ('Home'),
+            label: ('Clear'),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.list_outlined,
+              Icons.speaker_phone_outlined,
             ),
-            label: ('List'),
+            label: ('Measure'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            label: ('Cart'),
+            icon: Icon(Icons.mic_none_outlined),
+            label: ('Record'),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person_outline,
+              Icons.settings,
             ),
-            label: ('Account'),
+            label: ('Setting'),
           ),
         ],
       ),
