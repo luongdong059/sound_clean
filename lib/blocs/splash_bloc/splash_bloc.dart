@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:sound_clean/main.dart';
+import 'package:sound_clean/screens/nav_controller.dart';
 
 part 'splash_event.dart';
 part 'splash_state.dart';

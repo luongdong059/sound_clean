@@ -10,25 +10,26 @@ part 'clear_event.dart';
 part 'clear_state.dart';
 
 class ClearBloc extends Bloc<ClearEvent, ClearState> {
-  ClearBloc() : super(ClearInitial()) {
-    final _player = AudioPlayer();
-    _player.setAsset(AppAssets.sound);
-    // state is ClearInitial ? emit(SoundOffState(false)) : null;
+  final player = AudioPlayer();
 
-    on<PressSoundEvent>((event, emit) async {
-      print(state);
-      if (!event.isPress) {
-        await _player.play();
-        emit(SoundOffState(true));
-      }
-      if (event.isPress) {
-        await _player.stop();
-        emit(SoundOffState(false));
-      }
-      print(state);
-      Future<ByteData> loadAsset() async {
-        return await rootBundle.load('lib/assets/sounds/165Hz.mp3');
-      }
-    });
+  ClearBloc() : super(ClearInitial()) {
+    on<PressSoundEvent>(_onPressSoundEvent);
+  }
+
+  Future<void> _onPressSoundEvent(
+      PressSoundEvent event, Emitter<ClearState> emit) async {
+    player.setAsset(AppAssets.sound);
+
+    if (!event.isPress) {
+      await player.play();
+      emit(const SoundPlayingState(true));
+    }
+    if (event.isPress) {
+      await player.stop();
+      emit(const SoundPlayingState(false));
+    }
+    Future<ByteData> loadAsset() async {
+      return await rootBundle.load('lib/assets/sounds/165Hz.mp3');
+    }
   }
 }

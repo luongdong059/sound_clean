@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sound_clean/themes/app_colors.dart';
 import '../../blocs/blocs_export.dart';
+import '../../generated/l10n.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -35,7 +36,7 @@ class SplashScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 state is GetVersionSuccess
-                    ? Text('${'version'.tr()} ${state.version}')
+                    ? Text('${S.of(context).version} ${state.version}')
                     : const SizedBox(),
               ],
             ),
