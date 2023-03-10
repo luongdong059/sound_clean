@@ -14,7 +14,7 @@ class NavBarScreen extends StatefulWidget {
 }
 
 class _NavBarScreenState extends State<NavBarScreen> {
-  final List<Widget> _screenList = <Widget>[
+  final List<Widget> _screenList = const <Widget>[
     ClearScreen(),
     MeasureScreen(),
     RecordScreen(),
@@ -34,39 +34,43 @@ class _NavBarScreenState extends State<NavBarScreen> {
         selectedItemColor: AppColors.black06,
         unselectedItemColor: AppColors.black02,
         iconSize: 30,
-        onTap: screenChanger,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.blur_circular_outlined,
-            ),
-            label: ('Clear'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.speaker_phone_outlined,
-            ),
-            label: ('Measure'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mic_none_outlined),
-            label: ('Record'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-            ),
-            label: ('Setting'),
-          ),
-        ],
+        onTap: (index) => _onItemTapped(index),
+        items: _getBottomNavigationBar(),
       ),
     );
   }
 
-  screenChanger(int value) {
+  List<BottomNavigationBarItem> _getBottomNavigationBar() {
+    return const [
+      BottomNavigationBarItem(
+        icon: Icon(
+          Icons.blur_circular_outlined,
+        ),
+        label: ('Clear'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(
+          Icons.speaker_phone_outlined,
+        ),
+        label: ('Measure'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.mic_none_outlined),
+        label: ('Record'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(
+          Icons.settings,
+        ),
+        label: ('Setting'),
+      ),
+    ];
+  }
+
+  void _onItemTapped(int index) {
     setState(
       () {
-        _currentIndex = value;
+        _currentIndex = index;
       },
     );
   }
