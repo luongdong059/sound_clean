@@ -1,5 +1,5 @@
 class AppAssets {
-  static const String _root = 'lib/assets/';
+  static const String _root = 'lib/assets';
 
   // Fonts
   static const String font = '$_root/fonts/Poppins-Regular.ttf';
