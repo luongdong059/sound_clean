@@ -8,9 +8,15 @@ import '../../blocs/blocs_export.dart';
 import '../../generated/l10n.dart';
 import '../../themes/theme.dart';
 
-class ClearScreen extends StatelessWidget {
+class ClearScreen extends StatefulWidget {
   const ClearScreen({super.key});
 
+  @override
+  State<ClearScreen> createState() => _ClearScreenState();
+}
+
+class _ClearScreenState extends State<ClearScreen> {
+  bool isVietNamese = false;
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -21,23 +27,21 @@ class ClearScreen extends StatelessWidget {
       ],
       child: Scaffold(
         body: SafeArea(
-            child: Column(
+            child: ListView(
           children: [
-            Spacer(),
-            BlocBuilder<LocalizationBloc, LocalizationState>(
-              builder: (context, state) {
-                return TextButton(
-                  onPressed: () {
+            Switch(
+                value: isVietNamese,
+                onChanged: (value) {
+                  setState(() {
+                    isVietNamese = value;
                     BlocProvider.of<LocalizationBloc>(context).add(
-                      const LocalizationChangeEvent(
-                        locale: Locale('vi'),
+                      LocalizationChangeEvent(
+                        locale: isVietNamese ? Locale('vi') : Locale('en'),
                       ),
                     );
-                  },
-                  child: Text(S.of(context).change),
-                );
-              },
-            ),
+                  });
+                }),
+            Text(S.of(context).change),
             BlocBuilder<ClearBloc, ClearState>(
               builder: (context, state) {
                 return WidgetCircularAnimator(
@@ -77,7 +81,6 @@ class ClearScreen extends StatelessWidget {
                 );
               },
             ),
-            const Spacer(),
           ],
         )
 

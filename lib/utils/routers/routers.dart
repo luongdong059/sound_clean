@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sound_clean/blocs/clear_bloc/clear_bloc.dart';
+import 'package:sound_clean/blocs/splash_bloc/splash_bloc.dart';
 import 'package:sound_clean/screens/clear/clear_screen.dart';
 import 'package:sound_clean/screens/measure/measure_screen.dart';
 import 'package:sound_clean/screens/setting/setting_screen.dart';
@@ -12,12 +15,17 @@ class Routers {
       case '/':
         return _buildRoute(
           settings,
-          SplashScreen(),
+          BlocProvider(
+            create: (context) => SplashBloc(),
+            child: const SplashScreen(),
+          ),
         );
       case RouterName.ClearScreen:
         return _buildRoute(
           settings,
-          ClearScreen(),
+          MultiBlocProvider(providers: [
+            BlocProvider(create: (BuildContext context) => ClearBloc())
+          ], child: ClearScreen()),
         );
       case RouterName.MeasureScreen:
         return _buildRoute(
@@ -41,7 +49,7 @@ class Routers {
   }
 
   static Route _errorRoute(RouteSettings settings) {
-    return MaterialPageRoute(
+    return CupertinoPageRoute(
       builder: (_) => Scaffold(
         body: Center(child: Text('No route defined for ${settings.name}')),
       ),

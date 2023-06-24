@@ -14,7 +14,7 @@ class NavBarScreen extends StatefulWidget {
 }
 
 class _NavBarScreenState extends State<NavBarScreen> {
-  final List<Widget> _screenList = const <Widget>[
+  final List<Widget> _screenList = <Widget>[
     ClearScreen(),
     MeasureScreen(),
     RecordScreen(),

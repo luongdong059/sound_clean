@@ -26,9 +26,6 @@
 [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
-
-<div>![logo](https://user-images.githubusercontent.com/61487699/219613145-ac2f4335-e31f-4e35-8c39-d77f2da7079b.png)</div>
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
